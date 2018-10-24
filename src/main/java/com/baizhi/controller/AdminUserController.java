@@ -24,9 +24,10 @@ public class AdminUserController {
               return false;
          }
         boolean b = adminUserService.selectAdminUser(adminUser);
-       /* if(b){
+//        System.out.println(adminUser.getName());
+        if(b){
             session.setAttribute("admin",adminUser.getName());
-        }*/
+        }
         return b;
     }
 

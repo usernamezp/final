@@ -14,9 +14,10 @@
             <result column="m_parent_id" property="parent_id"/>
             <result column="m_iconCls" property="iconCls"/>
             <result column="m_title" property="title"/>
+            <result column="m_url" property="url"/>
         </collection>
     </resultMap>
     <select id="getAllMenu" resultMap="menu">
-SELECT t.*,m.title m_title,m.parent_id m_parent_id,m.iconCls m_iconCls FROM menu t INNER JOIN menu m on m.parent_id=t.id
+SELECT t.*,m.title m_title,m.parent_id m_parent_id,m.iconCls m_iconCls,m.url m_url FROM menu t INNER JOIN menu m on m.parent_id=t.id
    </select>
 </mapper>

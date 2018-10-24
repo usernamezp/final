@@ -14,7 +14,32 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/themes/default/easyui.css">
     <script type="text/javascript">
         <!--菜单处理-->
-
+        $(function () {
+            var first=$("#addtabs").val();
+            $('#aa').accordion('add', {
+                title: first.title,
+               // content: c,
+                iconCls: first.iconCls,
+                selected: false
+            });
+        });
+        function addTabs(title, url, iconCls) {
+            // alert(url)//现在url什么都没有,需要去数据库添加
+            // alert(title)
+            var flag = $("#tt").tabs("exists", title);
+            var iconCls1="icon-"+iconCls;
+            if (flag){
+                $("#tt").tabs("select", title);
+            }else {
+                $('#tt').tabs('add', {
+                    title: title,
+                    selected: true,
+                    iconCls: iconCls1,
+                    href: "${pageContext.request.contextPath}/" + url,
+                    closable:true
+                })
+            }
+        };
     </script>
 
 </head>
@@ -23,7 +48,7 @@
     <div style="font-size: 24px;color: #FAF7F7;font-family: 楷体;font-weight: 900;width: 500px;float:left;padding-left: 20px;padding-top: 10px">
         持名法州后台管理系统
     </div>
-    <div style="font-size: 16px;color: #FAF7F7;font-family: 楷体;width: 300px;float:right;padding-top:15px">欢迎您:xxxxx
+    <div style="font-size: 16px;color: #FAF7F7;font-family: 楷体;width: 300px;float:right;padding-top:15px">欢迎您:${sessionScope.admin}
         &nbsp;<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-edit'">修改密码</a>&nbsp;&nbsp;<a href="#"
                                                                                                               class="easyui-linkbutton"
                                                                                                               data-options="iconCls:'icon-01'">退出系统</a>
@@ -39,7 +64,10 @@
             <div title="${menu.title}" data-options="iconCls:'icon-${menu.iconCls}',selected:true"
                  style="padding:10px;">
                 <c:forEach items="${menu.menulist}" var="mm">
-                    <img src="${pageContext.request.contextPath }/themes/icons/${mm.iconCls}.png" alt="">${mm.title}
+                        <img src="${pageContext.request.contextPath }/themes/icons/${mm.iconCls}.png" alt="">
+                    <a id="addtabs" data-options="iconCls:'icon-${mm.iconCls}',plain:true" onclick="addTabs('${mm.title}','${mm.url}','${mm.iconCls}')">
+                    ${mm.title}
+                    </a>
                 </c:forEach>
             </div>
         </c:forEach>
