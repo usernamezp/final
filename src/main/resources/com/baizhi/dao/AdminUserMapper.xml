@@ -6,7 +6,7 @@
     <select id="selectAdminUser" resultType="com.baizhi.entity.AdminUser">
     SELECT * from admin WHERE NAME=#{name} AND PASSWORD=#{password}
     </select>
-    <select id="selectName" resultType="com.baizhi.entity.AdminUser">
+    <select id="selectName" resultType="AdminUser">
     SELECT * from admin WHERE NAME=#{name}
     </select>
 </mapper>

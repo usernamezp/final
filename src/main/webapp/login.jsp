@@ -44,11 +44,11 @@
         function formlogin() {
             //  form 表单提交
             $("#loginForm").form("submit", {
-                url: "http://localhost:9292/cmfz/admin/login",
+                url: "${pageContext.request.contextPath }/admin/login",
                 success: function (data) {
                     // alert(data)
                     if (data == true + "") {
-                        window.location.href = "http://localhost:9292/cmfz/menu/getAllMenu";
+                        window.location.href = "${pageContext.request.contextPath }/menu/getAllMenu";
                     } else {
                         $.messager.alert("提示", "用户名或密码错误，请重新输入!", "info");
                     }
