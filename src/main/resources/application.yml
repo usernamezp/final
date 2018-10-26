@@ -20,6 +20,9 @@ spring:
     encoding:
       force: true
       charset: UTF-8
+    multipart:
+      max-file-size: 50Mb
+      max-request-size: 100Mb
 
 mybatis:
   mapper-locations: com/baizhi/dao/*Mapper.xml

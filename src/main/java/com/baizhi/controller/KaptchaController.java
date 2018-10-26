@@ -15,6 +15,7 @@ import java.io.ByteArrayOutputStream;
  */
 @Controller
 public class KaptchaController {
+    //验证码
     @Autowired
     private DefaultKaptcha captchaProducer;
 

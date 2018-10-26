@@ -1,7 +1,7 @@
 package com.baizhi.entity;
 
 import java.util.List;
-
+//导航菜单
 public class Menu {
     private int id;
     private String title;

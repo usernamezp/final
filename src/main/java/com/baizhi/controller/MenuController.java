@@ -12,6 +12,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/menu")
 public class MenuController {
+    //手风琴页面展示
     @Autowired
     MenuService menuService;
 

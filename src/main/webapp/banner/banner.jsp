@@ -4,6 +4,9 @@
     $(function () {
         // alert("11111111111111")
         //添加弹出框
+        $("#ljtj3").linkbutton({
+            iconCls:"icon-add"
+        });
         $('#tianjia').dialog({
             title: '添加',
             width: 400,
@@ -149,7 +152,7 @@
         图片名字：<input name="name"/><br>
         描述：<input name="description"/><br>
         图片url：<input name="file" type="file"/><br>
-        <a class="easyui-linkbutton" data-options="iconCls:'icon-add'" onclick="insert()">立即添加</a>
+        <a id="ljtj3" onclick="insert()">立即添加</a>
     </form>
 </div>
 

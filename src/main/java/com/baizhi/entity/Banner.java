@@ -1,7 +1,7 @@
 package com.baizhi.entity;
 
 import java.sql.Date;
-
+//轮播图
 public class Banner {
     private int id;
     private String name;

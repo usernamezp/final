@@ -16,6 +16,7 @@ import java.util.Map;
 @Controller
 @RequestMapping("/banner")
 public class BannnerController {
+    //轮播图页面增删改查
     @Autowired
     BannerService bannerService;
 

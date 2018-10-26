@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/admin")
 public class AdminUserController {
+    //管理员登录表
     @Autowired
     AdminUserService adminUserService;
 

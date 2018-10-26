@@ -1,5 +1,5 @@
 package com.baizhi.entity;
-
+//管理员
 public class AdminUser {
     private int id;
     private String name;
