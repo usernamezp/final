@@ -5,16 +5,14 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>持名法州主页</title>
-    <link rel="stylesheet" type="text/css" href="../themes/IconExtension.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/themes/IconExtension.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/themes/default/easyui.css">
     <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery.easyui.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/js/easyui-lang-zh_CN1.3.5.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/js/datagrid-detailview.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery.edatagrid.js"></script><%------%>
-
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/themes/icon.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/themes/default/easyui.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/themes/icon.css">
+    <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery.edatagrid.js"></script>
     <script type="text/javascript">
         <!--菜单处理-->
         $(function () {

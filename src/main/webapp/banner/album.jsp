@@ -18,6 +18,7 @@
             }
         });
     }
+
     /*添加章节*/
     function insertadd() {
         $('#form12').form('submit', {
@@ -35,12 +36,13 @@
             }
         });
     }
+
     $(function () {
         $("#ljtj").linkbutton({
-            iconCls:"icon-add"
+            iconCls: "icon-add"
         });
         $("#ljtj2").linkbutton({
-            iconCls:"icon-add"
+            iconCls: "icon-add"
         });
         $('#tianjia1').dialog({
             title: '添加专辑',
@@ -59,8 +61,8 @@
             width: 400,
             height: 280,
             closed: true,
-            cache:false,
-            modal:true
+            cache: false,
+            modal: true
         });
         $('#albumtt').treegrid({
             url: '${pageContext.request.contextPath }/album/getAll',
@@ -85,14 +87,14 @@
                     if (obj == null) {
                         alert('请先选择要查看哪个专辑！');
                     } else {
-                        if (obj.id != 0) {
+                        if (obj.url == null || obj.url == undefined) {
                             $.ajax({
-                                url: "${pageContext.request.contextPath}/album/selectOne",
-                                type: "get",
+                                url: "${pageContext.request.contextPath}/album/selectOne?id="+obj.id,
+                                /*type: "post",
                                 dataType: "json",
-                                data: {id: obj.id},
+                                data: {id: obj.id},*/
                                 success: function (data) {
-                                    var j="<p>专辑名："+data.name+"</p><p>专辑封面:<img style='height: 20px;width: 40px' src='${pageContext.request.contextPath}/banner/"+data.coverlmg+"'></img></p><p>数量："+data.count+"</p><p>评分："+data.score+"</p><p>作者："+data.author+"</p><p>播音："+data.broadCast+"</p><p>介绍："+data.brief+"</p><p>发布日期："+data.pubishDate+"</p>"
+                                    var j = "<p>专辑名：" + data.name + "</p><p>专辑封面:<img style='height: 20px;width: 40px' src='${pageContext.request.contextPath}/banner/" + data.coverlmg + "'></img></p><p>数量：" + data.count + "</p><p>评分：" + data.score + "</p><p>作者：" + data.author + "</p><p>播音：" + data.broadCast + "</p><p>介绍：" + data.brief + "</p><p>发布日期：" + data.pubishDate + "</p>"
                                     $('#selectOne').html(j);
                                     $('#selectOne').dialog("open");
                                 }
@@ -117,8 +119,8 @@
                         alert('请选择要添加到哪个专辑！');
                     } else {
                         // var oid=$("#tt").treegrid("getParent")
-                        // alert(oid.id)
-                        if (obj.id!= 0) {
+                        // alert(obj.url)
+                        if (obj.url == null || obj.url == undefined) {
                             // alert(obj.id);
                             var id = obj.id;
                             $("#aid").prop("value", id);
@@ -135,13 +137,21 @@
                 handler: function () {
                     // alert('下载音频')
                     var obj = $('#albumtt').treegrid("getSelected");
-                    window.location.href="${pageContext.request.contextPath}/chapter/xiazai?url="+obj.url;
+                    if(obj==null||obj==undefined){
+                        alert("请选择要下载的音频")
+                        return
+                    }
+                    if (obj.url != null || obj.url != undefined) {
+                        window.location.href = "${pageContext.request.contextPath}/chapter/xiazai?url=" + obj.url;
+                    } else {
+                        alert("您选择的不是音频，请重新选择音频")
+                    }
                 }
             }]
         });
         //双击事件
         $("#albumtt").treegrid({
-            onDblClickRow:function(row){
+            onDblClickRow: function (row) {
                 //自动执行这个函数
                 music1(row)
             }
@@ -154,11 +164,12 @@
             closed: true
         });
     })
+
     //播放音乐
     function music1(row) {
         // alert("0000000000000")
         <%--console.log("${pageContext.request.contextPath}/banner/"+row.url);--%>
-        $("#sour").prop("src","${pageContext.request.contextPath}/banner/"+row.url);
+        $("#sour").prop("src", "${pageContext.request.contextPath}/banner/" + row.url);
         // var a = $("#sour").prop("src");
         // alert(a)
         /*$('#music').dialog({
@@ -178,8 +189,8 @@
 <div id="addChapter">
     <form id="form12" method="post" enctype="multipart/form-data">
         <input id="aid" type="hidden" name="album_id">
-        章节名字:<input name="name"><br>
-        文件:<input name="file" type="file"><br>
+        <%--章节名字:<input name="name"><br>--%>
+        请选择音频文件:<input name="file" type="file"><br>
         <%--文件大小:<input name="size"><br>
         文件时长:<input name="duration"><br>--%>
         <a id="ljtj2" onclick="insertadd()">立即添加</a>

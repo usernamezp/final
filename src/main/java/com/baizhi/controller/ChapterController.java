@@ -31,7 +31,12 @@ public class ChapterController {
     //添加章节(上传)
     public boolean insert(Chapter chapter, MultipartFile file, HttpServletRequest request) {
         try {
+            final long time = new Date().getTime();
+            int i = (int) time;
+            chapter.setId(i);
             String name = new Date().getTime() + "" + file.getOriginalFilename();
+            String name1=file.getOriginalFilename();
+            chapter.setName(name1.substring(0,name1.indexOf(".")));
             //获取当前项目名
             String path = request.getSession().getServletContext().getRealPath("/");
             //在当前项目下的banner目录下
